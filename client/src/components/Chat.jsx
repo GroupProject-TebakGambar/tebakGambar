@@ -260,7 +260,7 @@ const Chat = () => {
           
         </div>
         
-        <div className="mt-2 absolute bottom-2 left-5 right-5 bg-blue-900">
+        <div className="mt-2 absolute bottom-2 left-5 right-5">
             <div className="flex items-center ">
               <input
                 type="text"
