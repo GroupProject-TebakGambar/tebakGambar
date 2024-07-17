@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import CardGame from "./CardGame";
 import Chat from "./Chat";
+import socket from "../socket";
 
-const SideBar = (props) => {
-    const { onlineUsers } = props;
+const SideBar = () => {
+    const [onlineUsers, setOnlineUsers] = useState([]);
+
+    useEffect(() => {
+        socket.on("online:users", (args) => {
+            console.log(args);
+            setOnlineUsers(args);
+        });
+    }, []);
+
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -45,54 +55,26 @@ const SideBar = (props) => {
                         >
                             Tebak Gambar
                         </span>
-                        <li>
-                            <div className="flex">
-                                <div className="relative">
-                                    <img
-                                        className="w-10 h-10 rounded-full"
-                                        style={{ marginLeft: 10 }}
-                                        src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-                                        alt=""
-                                    />
-                                    <span className="top-0 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full" />
-                                </div>
-                                {/* <div className="flex items-center w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"> */}
-                                <div>username1</div>
-                                {/* </div> */}
-                            </div>
-                        </li>
-                        <li>
-                            <div className="flex">
-                                <div className="relative">
-                                    <img
-                                        className="w-10 h-10 rounded-full"
-                                        style={{ marginLeft: 10 }}
-                                        src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-                                        alt=""
-                                    />
-                                    <span className="top-0 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full" />
-                                </div>
-                                <div className="flex items-center w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                                    username2
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="flex">
-                                <div className="relative">
-                                    <img
-                                        className="w-10 h-10 rounded-full"
-                                        style={{ marginLeft: 10 }}
-                                        src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-                                        alt=""
-                                    />
-                                    <span className="top-0 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full" />
-                                </div>
-                                <div className="flex items-center w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                                    username3
-                                </div>
-                            </div>
-                        </li>
+                        {onlineUsers.map((el) => {
+                            return (
+                                <li key={el.id}>
+                                    <div className="flex">
+                                        <div className="relative">
+                                            <img
+                                                className="w-10 h-10 rounded-full"
+                                                style={{ marginLeft: 10 }}
+                                                src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                                alt=""
+                                            />
+                                            <span className="top-0 left-9 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full" />
+                                        </div>
+                                        <div className="pl-11 text-gray-900 dark:text-white">
+                                            {el.username}
+                                        </div>
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
             </div>
