@@ -25,6 +25,7 @@ const HomePage = () => {
             socket.auth = { username: textUsername };
             socket.disconnect().connect();
             setUsername(textUsername);
+            localStorage.setItem("username", textUsername);
             document.getElementById("my_modal_4").close();
         }
     };

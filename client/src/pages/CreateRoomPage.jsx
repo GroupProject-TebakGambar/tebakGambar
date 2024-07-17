@@ -8,7 +8,7 @@ const CreateRoomPage = () => {
     const [room, setRoom] = useState("");
     const navigate = useNavigate();
 
-    const owner = "budi";
+    const owner = localStorage.username;
     const opponent = "";
     const scoreOwner = 0;
     const scoreOpponent = 0;
