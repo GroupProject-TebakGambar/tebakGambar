@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CardGame from "./CardGame";
+import { Outlet } from "react-router-dom";
 import Chat from "./Chat";
 import socket from "../socket";
 
@@ -25,8 +25,8 @@ const SideBar = () => {
                     {/* Page content here */}
 
                     <div className="grid grid-cols-2 h-full w-full">
-                        <div className="bg-amber-500">
-                            <CardGame />
+                        <div className="bg-rose-500">
+                            <Outlet />
                         </div>
                         <div className="bg-violet-500">
                             <Chat />
@@ -47,10 +47,10 @@ const SideBar = () => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                     ></label>
-                    <ul className="menu bg-accent-200 text-base-content min-h-full w-80 p-4">
+                    <ul className="menu bg-inherit text-base-content min-h-full w-80 p-4">
                         {/* Sidebar content here */}
                         <span
-                            className="flex-1 ms-3 whitespace-nowrap font-bold text-2xl text-red-700"
+                            className="flex-1 ms-3 whitespace-nowrap font-bold text-2xl text-rose-500"
                             style={{ marginLeft: 50, fontStyle: "italic" }}
                         >
                             Tebak Gambar
