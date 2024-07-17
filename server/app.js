@@ -9,7 +9,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
         // origin: "https://tebakgambar-66ba1.web.app",
-        origin: "http://localhost:5174",
+        origin: "http://localhost:5173",
     },
 });
 const router = require("./routers");

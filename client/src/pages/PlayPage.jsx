@@ -29,7 +29,7 @@ const PlayPage = (props) => {
 
   return (
     <>
-      <CardGame dataGame={dataGame} dataRoom={value && value.data()} />
+      <CardGame idRoom={idRoom} dataGame={dataGame} dataRoom={value && value.data()} />
     </>
   );
 };
