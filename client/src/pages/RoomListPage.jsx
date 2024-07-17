@@ -81,25 +81,23 @@ import { collection, doc, updateDoc } from "firebase/firestore";
 
 export default function RoomListPage() {
     const navigate = useNavigate();
-    const [isJoinEnable, setIsJoinEnable] = useState(true);
 
     const [value, loading, error] = useCollection(collection(db, "rooms"), {
         snapshotListenOptions: { includeMetadataChanges: true },
     });
 
-    useEffect(() => {
-        // ganti();
-    }, []);
-    const ganti = async () => {
+    const updateDB = async (idRoom) => {
         try {
-            console.log("gantiiiii");
-            await updateDoc(doc(db, "rooms", "3Z8s3LVfxHOfZrZRKMJT"), {
-                opponent: "test",
-            });
+
+            await updateDoc(doc(db, "rooms", idRoom), {
+                opponent: localStorage.username
+            })
+            // console.log(id, "INI ID GES");
+            navigate(`/play/${idRoom}`)
         } catch (error) {
-            console.log(error, "<<<<<<ganti error");
+            console.log(error);
         }
-    };
+    }
     return (
         <>
             <div className="m-4 gap-4 grid grid-cols-2">
@@ -141,6 +139,7 @@ export default function RoomListPage() {
                                     ) : (
                                         <button
                                             type="button"
+                                            onClick={() => { updateDB(el.id) }}
                                             className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                                         >
                                             Join
