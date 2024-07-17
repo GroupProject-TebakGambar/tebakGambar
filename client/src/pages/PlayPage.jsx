@@ -1,14 +1,13 @@
+import CardGame from "../components/CardGame";
 import SideBar from "../components/SideBar";
 
 const PlayPage = (props) => {
     const { username } = props;
 
     return (
-        <>
-            <div className="opacity-90">
-                <SideBar username={username} />
-            </div>
-        </>
+      <>
+      <CardGame />
+      </>
     );
 };
 
