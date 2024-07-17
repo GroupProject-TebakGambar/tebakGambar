@@ -38,9 +38,10 @@ const CreateRoomPage = () => {
                                         createdAt: serverTimestamp(),
                                     }
                                 );
-
-                                console.log("ini log diatas navigate");
-                                navigate("/");
+                                // console.log(docRef,"INI DOCREF DOANG YA");
+                                // console.log(docRef.id,"INI DOCREF");
+                                // console.log("ini log diatas navigate");
+                                navigate(`/play/${docRef.id}`);
                             } catch (error) {
                                 console.log(error, "waw");
                             }
@@ -72,9 +73,9 @@ const CreateRoomPage = () => {
                                 className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >
                                 <option disabled value={"Pick one"}>Choose Your Level</option>
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
                             </select>
                         {/* <Link to={"/play"}> */}
                             <button
