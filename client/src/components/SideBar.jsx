@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import CardGame from "./CardGame";
 import Chat from "./Chat";
+import socket from "../socket";
 
-const SideBar = (props) => {
-    const { onlineUsers } = props;
+const SideBar = () => {
+    const [onlineUsers, setOnlineUsers] = useState([]);
+
+    useEffect(() => {
+        socket.on("online:users", (args) => {
+            console.log(args);
+            setOnlineUsers(args);
+        });
+    }, []);
+
     return (
         <>
             <div className="drawer lg:drawer-open">

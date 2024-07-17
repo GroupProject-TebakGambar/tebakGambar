@@ -7,16 +7,10 @@ import socket from "../socket";
 const HomePage = () => {
     const [textUsername, setTextUsername] = useState("");
     const [username, setUsername] = useState("");
-    const [onlineUsers, setOnlineUsers] = useState([]);
     // const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         document.getElementById("my_modal_4").showModal();
-
-        socket.on("online:users", (args) => {
-          console.log(args);
-            setOnlineUsers(args);
-        });
 
         // socket.on("new:message", (args) => {
         //     setMessages((prev) => {
@@ -28,7 +22,6 @@ const HomePage = () => {
     const submitUsername = (e) => {
         e.preventDefault();
         if (textUsername) {
-            // localStorage.setItem("username", textUsername);
             socket.auth = { username: textUsername };
             socket.disconnect().connect();
             setUsername(textUsername);
@@ -41,7 +34,7 @@ const HomePage = () => {
 
     return (
         <>
-            <SideBar onlineUsers={onlineUsers} />
+            <SideBar />
             <dialog id="my_modal_4" className="modal">
                 <div className="justify-center items-center flex flex-col  modal-box w-11/12 max-w-5xl">
                     <h3 className="font-bold text-2xl">Tebak Gambar</h3>
