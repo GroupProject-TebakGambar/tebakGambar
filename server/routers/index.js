@@ -10,8 +10,7 @@ router.get("/game", async (req, res) => {
         if (level) {
             query = {
                 where: { level: level },
-                attributes: ['id', 'imgUrl', 'level', 'answer'],
-                order: Sequelize.literal('RANDOM()')
+                attributes: ['id', 'imgUrl', 'level', 'answer']
               }
         } else {
             query = { attributes: ['id', 'imgUrl', 'level', 'answer'] }
