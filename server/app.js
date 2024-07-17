@@ -8,7 +8,7 @@ const { Server } = require("socket.io");
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5174",
+        origin: "https://tebakgambar-66ba1.web.app",
     },
 });
 const router = require("./routers");
