@@ -49,12 +49,17 @@ const SideBar = () => {
                     ></label>
                     <ul className="menu bg-inherit text-base-content min-h-full w-80 p-4">
                         {/* Sidebar content here */}
-                        <span
-                            className="flex-1 ms-3 whitespace-nowrap font-bold text-2xl text-rose-500"
-                            style={{ marginLeft: 50, fontStyle: "italic" }}
+                        <img
+                            className="h-auto max-w-l rounded-lg"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Logo_Tebak_Gambar.png/768px-Logo_Tebak_Gambar.png"
+                            alt=""
+                        />
+                        <p
+                            className="text-bold text-gray-900 dark:text-white"
+                            style={{ marginLeft: 25, marginBottom: 20, marginTop:30 }}
                         >
-                            Tebak Gambar
-                        </span>
+                            Players Online :
+                        </p>
                         {onlineUsers.map((el) => {
                             return (
                                 <li key={el.id}>
