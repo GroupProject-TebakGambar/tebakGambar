@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
     // Handle incoming audio stream
     socket.on("audioStream", (audioData) => {
         console.log("masukkkk");
-        socket.broadcast.emit("audioStream", audioData);
+        io.emit("audioStream", audioData);
     });
 
     socket.on("clientMessage", (args) => {
