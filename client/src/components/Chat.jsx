@@ -84,7 +84,7 @@ const Chat = () => {
     return (
         <>
             <div className="h-full relative">
-                <div className="container-fluid bg-blue-400 p-5 flex flex-col absolute bottom-[70px] left-0 right-0 top-0 scroll-pl-6 snap-y overflow-y-auto">
+                <div className="container-fluid bg-teal-500 p-5 flex flex-col absolute bottom-[70px] left-0 right-0 top-0 scroll-pl-6 snap-y overflow-y-auto">
                     <div className="self-end mb-2">
                         <div className="flex items-center justify-end">
                             <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -327,26 +327,43 @@ const Chat = () => {
                     </div>
 
                     {messages.map((el, idx) => {
-                        if (el.split(";")[0] === "data:audio/ogg") {
+                        if (
+                            typeof el === "string" &&
+                            el.split(";")[0] === "data:audio/ogg"
+                        ) {
                             return (
-                                <audio autoPlay key={idx} controls>
-                                    <source src={el} type="audio/ogg" />
-                                </audio>
+                                <div
+                                    key={idx}
+                                    className={
+                                        el.id === socket.id
+                                            ? "self-end mb-2 flex items-center"
+                                            : "self-start mb-2 flex items-center"
+                                    }
+                                >
+                                    <audio autoPlay key={idx} controls>
+                                        <source src={el} type="audio/ogg" />
+                                    </audio>
+                                </div>
                             );
                         } else {
                             return (
-                                <div key={idx} className="self-end mb-2">
-                                    <div className="flex items-center justify-end">
-                                        <div className="w-10 h-10 rounded-full overflow-hidden">
-                                            <img
-                                                className="w-full h-full object-cover"
-                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                                                alt="Avatar"
-                                            />
-                                        </div>
-                                        <div className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2">
-                                            {el}
-                                        </div>
+                                <div
+                                    key={idx}
+                                    className={
+                                        el.id === socket.id
+                                            ? "self-end mb-2 flex items-center"
+                                            : "self-start mb-2 flex items-center"
+                                    }
+                                >
+                                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                                        <img
+                                            className="w-full h-full object-cover"
+                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                            alt="Avatar"
+                                        />
+                                    </div>
+                                    <div className="bg-blue-500 text-white py-2 px-4 rounded-lg ml-2">
+                                        {el.message}
                                     </div>
                                 </div>
                             );

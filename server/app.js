@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("clientMessage", (args) => {
-        io.emit("new:message", args);
+        io.emit("new:message", { message: args, id: socket.id });
     });
 
     if (socket.handshake.auth.username) {
