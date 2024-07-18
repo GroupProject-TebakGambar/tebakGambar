@@ -9,9 +9,7 @@ const CreateRoomPage = () => {
     const navigate = useNavigate();
 
     const owner = localStorage.username;
-    const opponent = "";
-    const scoreOwner = 0;
-    const scoreOpponent = 0;
+    
 
     return (
         <>
@@ -31,10 +29,11 @@ const CreateRoomPage = () => {
                                     {
                                         nameRoom: `${room}`,
                                         owner: `${owner}`,
-                                        opponent: `${opponent}`,
+                                        opponent: ``,
                                         level: `${level}`,
-                                        scoreOwner: `${scoreOwner}`,
-                                        scoreOpponent: `${scoreOpponent}`,
+                                        scoreOwner: 0,
+                                        scoreOpponent: 0,
+                                        stage : 1,
                                         createdAt: serverTimestamp(),
                                     }
                                 );
