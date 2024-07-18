@@ -28,7 +28,7 @@ const SideBar = () => {
                         <div className="bg-rose-500">
                             <Outlet />
                         </div>
-                        <div className="bg-violet-500">
+                        <div className="bg-teal-500">
                             <Chat />
                         </div>
                     </div>

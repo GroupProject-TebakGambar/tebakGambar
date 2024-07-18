@@ -41,7 +41,7 @@ _Response (200 - OK)_
 ## 2. GET /game
 
 Description :
- - Get all game from database order by random 
+ - Get all game from database filter by level 
 
 Request :
 
@@ -49,7 +49,7 @@ Request :
 
 ```json
     {
-    level : Easy 
+        level : Easy 
     }
 ```
 
